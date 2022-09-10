@@ -12,14 +12,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inputUsername: TextInputLayout
     private lateinit var inputPassword: TextInputLayout
     private lateinit var mainLayout: ConstraintLayout
-    lateinit var mBundle: Bundle
-
+    lateinit var  mBundle: Bundle
     lateinit var vUsername: String
     lateinit var vPassword : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //getBundle()
+//        getBundle()
         setTitle("User Login")
 
         inputUsername = findViewById(R.id.inputLayoutUsername)
@@ -48,11 +47,15 @@ class MainActivity : AppCompatActivity() {
                 checkLogin=false
             }
 
-            if (username == "admin" && password == "0692") checkLogin=true
+            if (username == "admin" && password == "admin") checkLogin=true
             if(!checkLogin) return@OnClickListener
             val moveHome = Intent( this@MainActivity,HomeActivity::class.java)
             startActivity(moveHome)
         })
     }
-
+    fun getBundle(){
+        mBundle = intent.getBundleExtra("register")!!
+        vUsername = mBundle.getString("username")!!
+        vPassword = mBundle.getString("password")!!
+    }
 }

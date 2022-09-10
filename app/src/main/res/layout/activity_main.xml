@@ -49,16 +49,17 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Username"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/black"
             app:errorEnabled="true"
             app:startIconDrawable="@drawable/ic_person_24"
+            app:boxBackgroundColor="@color/white"
             android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,7 +68,8 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="Password"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/black"
+            app:boxBackgroundColor="@color/white"
             app:startIconDrawable="@drawable/ic_lock_24"
             app:errorEnabled="true">
 
@@ -113,6 +115,7 @@
             android:id="@+id/btnRegister"
             android:layout_width="243dp"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:text="Register" />
     </LinearLayout>
 

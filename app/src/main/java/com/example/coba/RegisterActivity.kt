@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputEditText
 
 class RegisterActivity : AppCompatActivity() {
@@ -13,6 +14,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var phone: TextInputEditText
     private lateinit var bornDate : TextInputEditText
     private lateinit var email : TextInputEditText
+    private lateinit var mainRegister: ConstraintLayout
     private lateinit var btnRegister: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         bornDate = findViewById(R.id.etBornDate)
         email = findViewById(R.id.etEmail)
         btnRegister= findViewById(R.id.btnRegister)
+        mainRegister = findViewById(R.id.mainRegister)
 
         btnRegister.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
