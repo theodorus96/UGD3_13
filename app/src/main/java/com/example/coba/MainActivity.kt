@@ -12,17 +12,26 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inputUsername: TextInputLayout
     private lateinit var inputPassword: TextInputLayout
     private lateinit var mainLayout: ConstraintLayout
+    lateinit var mBundle: Bundle
 
+    lateinit var vUsername: String
+    lateinit var vPassword : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        //getBundle()
         setTitle("User Login")
 
         inputUsername = findViewById(R.id.inputLayoutUsername)
         inputPassword = findViewById(R.id.inputLayoutPassword)
         mainLayout = findViewById(R.id.mainLayout)
         val btnLogin: Button = findViewById(R.id.btnLogin)
+        val btnRegister: Button = findViewById(R.id.btnRegister)
+
+        btnRegister.setOnClickListener {
+            val moveRegister = Intent( this@MainActivity,RegisterActivity::class.java)
+            startActivity(moveRegister)
+        }
 
         btnLogin.setOnClickListener(View.OnClickListener {
             var checkLogin = false
@@ -45,4 +54,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(moveHome)
         })
     }
+
 }
