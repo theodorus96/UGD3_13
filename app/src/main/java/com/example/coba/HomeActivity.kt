@@ -16,9 +16,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        loadFragment(FragmentWisata())
+        loadFragment(FragmentHome())
 
-        changeFragment(FragmentWisata())
         bottomNav= findViewById(R.id.bottom_navigation) as BottomNavigationView
         bottomNav.setOnNavigationItemReselectedListener {
             when (it.itemId) {
@@ -31,24 +30,19 @@ class HomeActivity : AppCompatActivity() {
                     return@setOnNavigationItemReselectedListener
                 }
                 R.id.menu_exit -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    val mBundle = Bundle()
-                    mBundle.putString("username","")
-                    mBundle.putString("password","")
-                    intent.putExtra("register", mBundle)
-
-                    startActivity(intent)
+                    val builder: AlertDialog.Builder = AlertDialog.Builder(this@HomeActivity)
+                    builder.setMessage("Are you sure want to exit?")
+                        .setNegativeButton("YES", object : DialogInterface.OnClickListener {
+                            override fun onClick(dialogInterface: DialogInterface, i:Int){
+                                finishAndRemoveTask()
+                            }
+                        }).setPositiveButton("No", object : DialogInterface.OnClickListener {
+                            override fun onClick(dialogInterface: DialogInterface, i:Int){
+                            }
+                        })
+                        .show()
                 }
             }
-        }
-    }
-
-    fun changeFragment(fragment: Fragment?){
-        if(fragment != null){
-            getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.flFragment, fragment)
-                .commit()
         }
     }
 
