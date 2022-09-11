@@ -1,6 +1,7 @@
 package com.example.coba
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,12 +9,47 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
+    lateinit var bottomNav : BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         loadFragment(FragmentWisata())
+
+        changeFragment(FragmentWisata())
+        bottomNav= findViewById(R.id.bottom_navigation) as BottomNavigationView
+        bottomNav.setOnNavigationItemReselectedListener {
+            when (it.itemId) {
+                R.id.profil -> {
+                    loadFragment(FragmentProfil())
+                    return@setOnNavigationItemReselectedListener
+                }
+                R.id.wisata -> {
+                    loadFragment(FragmentWisata())
+                    return@setOnNavigationItemReselectedListener
+                }
+                R.id.menu_exit -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    val mBundle = Bundle()
+                    mBundle.putString("username","")
+                    mBundle.putString("password","")
+                    intent.putExtra("register", mBundle)
+
+                    startActivity(intent)
+                }
+            }
+        }
+    }
+
+    fun changeFragment(fragment: Fragment?){
+        if(fragment != null){
+            getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flFragment, fragment)
+                .commit()
+        }
     }
 
     override fun onCreateOptionsMenu(menu : Menu): Boolean{
@@ -43,7 +79,7 @@ class HomeActivity : AppCompatActivity() {
 
     private  fun loadFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(com.google.android.material.R.id.container,fragment)
+        transaction.replace(R.id.flFragment,fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }

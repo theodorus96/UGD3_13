@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //getBundle()
         setTitle("User Login")
 
         inputUsername = findViewById(R.id.inputLayoutUsername)
@@ -27,13 +26,17 @@ class MainActivity : AppCompatActivity() {
         val btnLogin: Button = findViewById(R.id.btnLogin)
         val btnRegister: Button = findViewById(R.id.btnRegister)
 
+        if(intent.getBundleExtra("register")!=null){
+            getBundle()
+        }
+
         btnRegister.setOnClickListener {
             val moveRegister = Intent( this@MainActivity,RegisterActivity::class.java)
             startActivity(moveRegister)
         }
 
         btnLogin.setOnClickListener(View.OnClickListener {
-            var checkLogin = false
+            var checkLogin = true
             val username: String = inputUsername.getEditText()?.getText().toString()
             val password: String = inputPassword.getEditText()?.getText().toString()
 
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 checkLogin=false
             }
 
-            if (username == "admin" && password == "admin") checkLogin=true
+            if (username == vUsername && password == vPassword) checkLogin=true
             if(!checkLogin) return@OnClickListener
             val moveHome = Intent( this@MainActivity,HomeActivity::class.java)
             startActivity(moveHome)
@@ -57,5 +60,9 @@ class MainActivity : AppCompatActivity() {
         mBundle = intent.getBundleExtra("register")!!
         vUsername = mBundle.getString("username")!!
         vPassword = mBundle.getString("password")!!
+
+        inputUsername.editText?.setText(vUsername)
+        inputPassword.editText?.setText(vPassword)
     }
+
 }
