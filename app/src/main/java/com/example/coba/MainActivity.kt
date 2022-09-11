@@ -18,9 +18,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //getBundle()
         setTitle("User Login")
 
+        if(intent.getBundleExtra("register")!=null){
+            getBundle()
+        }
         inputUsername = findViewById(R.id.inputLayoutUsername)
         inputPassword = findViewById(R.id.inputLayoutPassword)
         mainLayout = findViewById(R.id.mainLayout)
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnLogin.setOnClickListener(View.OnClickListener {
-            var checkLogin = false
+            var checkLogin = true
             val username: String = inputUsername.getEditText()?.getText().toString()
             val password: String = inputPassword.getEditText()?.getText().toString()
 
@@ -47,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 checkLogin=false
             }
 
-            if (username == "admin" && password == "admin") checkLogin=true
+            if (username == vUsername && password == vPassword) checkLogin=true
             if(!checkLogin) return@OnClickListener
             val moveHome = Intent( this@MainActivity,HomeActivity::class.java)
             startActivity(moveHome)
@@ -57,5 +59,9 @@ class MainActivity : AppCompatActivity() {
         mBundle = intent.getBundleExtra("register")!!
         vUsername = mBundle.getString("username")!!
         vPassword = mBundle.getString("password")!!
+
+        inputUsername.editText?.setText(vUsername)
+        inputPassword.editText?.setText(vPassword)
     }
+
 }

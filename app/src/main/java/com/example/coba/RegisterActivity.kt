@@ -51,7 +51,7 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
             val mBundle = Bundle()
-
+            var checkRegister = true
             val name : String = vName.getEditText()?.getText().toString()
             val username : String = vUsername.getEditText()?.getText().toString()
             val password : String = vPassword.getEditText()?.getText().toString()
@@ -61,22 +61,29 @@ class RegisterActivity : AppCompatActivity() {
 
             if(name.isEmpty()){
                 nameInput.setError("Nama Tidak Boleh Kosong")
+                checkRegister = false
             }
             if(username.isEmpty()){
                 usernameInput.setError("Username Tidak Boleh Kosong")
+                checkRegister = false
             }
             if(password.isEmpty()){
                 passwordInput.setError("Password Tidak Boleh Kosong")
+                checkRegister = false
             }
             if(email.isEmpty()){
                 emailInput.setError("Email Tidak Boleh Kosong")
+                checkRegister = false
             }
             if(bornDate.isEmpty()){
                 bornDateInput.setError("Tanggal Lahir Tidak Boleh Kosong")
+                checkRegister = false
             }
             if(phone.isEmpty()){
                 phoneInput.setError("Nomor Telepon Tidak Boleh Kosong")
-            } else {
+                checkRegister = false
+            }
+            if(checkRegister==true) {
                 mBundle.putString("nama", vName.getEditText()?.getText().toString())
                 mBundle.putString("username", vUsername.getEditText()?.getText().toString())
                 mBundle.putString("password", vPassword.getEditText()?.getText().toString())
