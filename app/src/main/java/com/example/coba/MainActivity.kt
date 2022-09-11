@@ -20,14 +20,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setTitle("User Login")
 
-        if(intent.getBundleExtra("register")!=null){
-            getBundle()
-        }
+
         inputUsername = findViewById(R.id.inputLayoutUsername)
         inputPassword = findViewById(R.id.inputLayoutPassword)
         mainLayout = findViewById(R.id.mainLayout)
         val btnLogin: Button = findViewById(R.id.btnLogin)
         val btnRegister: Button = findViewById(R.id.btnRegister)
+
+        if(intent.getBundleExtra("register")!=null){
+            getBundle()
+        }
 
         btnRegister.setOnClickListener {
             val moveRegister = Intent( this@MainActivity,RegisterActivity::class.java)

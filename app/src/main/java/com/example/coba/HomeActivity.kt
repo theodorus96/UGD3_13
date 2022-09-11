@@ -14,6 +14,17 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         loadFragment(FragmentWisata())
+
+        changeFragment(FragmentWisata())
+    }
+
+    fun changeFragment(fragment: Fragment?){
+        if(fragment != null){
+            getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flFragment, fragment)
+                .commit()
+        }
     }
 
     override fun onCreateOptionsMenu(menu : Menu): Boolean{
@@ -43,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
 
     private  fun loadFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(com.google.android.material.R.id.container,fragment)
+        transaction.replace(R.id.flFragment,fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
