@@ -5,8 +5,10 @@
         android:title="Profil"/>
 
     <item android:id="@+id/wisata"
+        android:icon="@drawable/ic_wisata_24"
         android:title="Wisata"/>
 
     <item android:id="@+id/menu_exit"
+        android:icon="@drawable/ic_logout_24"
         android:title="Log Out"/>
 </menu>
