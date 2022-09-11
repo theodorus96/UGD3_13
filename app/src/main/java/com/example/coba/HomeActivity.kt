@@ -60,8 +60,10 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.wisata){
-            //changeFragment(FragmentMahasiswa())
-        }else {
+            changeFragment(FragmentWisata())
+        }else if(item.itemId == R.id.profil) {
+            changeFragment(FragmentProfil())
+        }else{
             val builder: AlertDialog.Builder = AlertDialog.Builder(this@HomeActivity)
             builder.setMessage("Are you sure want to exit?")
                 .setNegativeButton("YES", object : DialogInterface.OnClickListener {
