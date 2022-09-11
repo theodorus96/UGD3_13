@@ -18,7 +18,7 @@ class RVWisataAdapter(private val data: Array<wisata>) : RecyclerView.Adapter<RV
         val currentItem = data[position]
         holder.tvNamaWisata.text = currentItem.name
         holder.tvLokasi.text = currentItem.lokasi
-        holder.tvImageWisata.setImageResource(currentItem.image)
+        //holder.tvImageWisata.setImageResource(currentItem.image)
     }
 
     override fun getItemCount(): Int {
