@@ -1,7 +1,6 @@
 package com.example.coba
 
 import android.content.DialogInterface
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -52,9 +51,21 @@ class HomeActivity : AppCompatActivity() {
         return true
     }
 
+    fun changeFragment(fragment: Fragment?){
+        if(fragment != null){
+            getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flFragment, fragment)
+                .commit()
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.wisata){
-            //changeFragment(FragmentMahasiswa())
+            changeFragment(FragmentWisata())
+        }
+        if(item.itemId == R.id.profil) {
+            changeFragment(FragmentProfil())
         }else {
             val builder: AlertDialog.Builder = AlertDialog.Builder(this@HomeActivity)
             builder.setMessage("Are you sure want to exit?")
