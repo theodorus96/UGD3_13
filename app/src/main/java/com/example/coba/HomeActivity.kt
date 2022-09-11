@@ -45,15 +45,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
-//
-//    fun changeFragment(fragment: Fragment?){
-//        if(fragment != null){
-//            getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.flFragment, fragment)
-//                .commit()
-//        }
-//    }
 
     override fun onCreateOptionsMenu(menu : Menu): Boolean{
         val menuInflater = MenuInflater(this)
