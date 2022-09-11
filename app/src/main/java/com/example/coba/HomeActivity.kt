@@ -21,10 +21,10 @@ class HomeActivity : AppCompatActivity() {
         bottomNav= findViewById(R.id.bottom_navigation) as BottomNavigationView
         bottomNav.setOnNavigationItemReselectedListener {
             when (it.itemId) {
-//                R.id.profil -> {
-//                    loadFragment(FragmentProfil())
-//                    return@setOnNavigationItemReselectedListener
-//                }
+                R.id.profil -> {
+                    loadFragment(FragmentProfil())
+                    return@setOnNavigationItemReselectedListener
+                }
                 R.id.wisata -> {
                     loadFragment(FragmentWisata())
                     return@setOnNavigationItemReselectedListener
