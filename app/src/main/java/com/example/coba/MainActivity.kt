@@ -39,15 +39,15 @@ class MainActivity : AppCompatActivity() {
             val username: String = inputUsername.getEditText()?.getText().toString()
             val password: String = inputPassword.getEditText()?.getText().toString()
 
-            if (username.isEmpty()){
-                inputUsername.setError("Username must be filled with text")
-                checkLogin=false
-            }
+                if (username.isEmpty()) {
+                    inputUsername.setError("Username must be filled with text")
+                    checkLogin = false
+                }
 
-            if (password.isEmpty()){
-                inputPassword.setError("Password must be filled with text")
-                checkLogin=false
-            }
+                if (password.isEmpty()) {
+                    inputPassword.setError("Password must be filled with text")
+                    checkLogin = false
+                }
 
             if (username == vUsername && password == vPassword) checkLogin=true
             if(!checkLogin) return@OnClickListener
