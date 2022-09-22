@@ -31,11 +31,11 @@ class HomeActivity : AppCompatActivity() {
                 R.id.menu_exit -> {
                     val builder: AlertDialog.Builder = AlertDialog.Builder(this@HomeActivity)
                     builder.setMessage("Are you sure want to exit?")
-                        .setNegativeButton("YES", object : DialogInterface.OnClickListener {
+                        .setPositiveButton("YES", object : DialogInterface.OnClickListener {
                             override fun onClick(dialogInterface: DialogInterface, i:Int){
                                 finishAndRemoveTask()
                             }
-                        }).setPositiveButton("No", object : DialogInterface.OnClickListener {
+                        }).setNegativeButton("No", object : DialogInterface.OnClickListener {
                             override fun onClick(dialogInterface: DialogInterface, i:Int){
                             }
                         })
@@ -69,12 +69,12 @@ class HomeActivity : AppCompatActivity() {
         }else {
             val builder: AlertDialog.Builder = AlertDialog.Builder(this@HomeActivity)
             builder.setMessage("Are you sure want to exit?")
-                .setNegativeButton("YES", object : DialogInterface.OnClickListener {
+                .setNegativeButton("No", object : DialogInterface.OnClickListener {
+                    override fun onClick(dialogInterface: DialogInterface, i:Int){
+                    }
+                }).setPositiveButton("Yes", object : DialogInterface.OnClickListener {
                     override fun onClick(dialogInterface: DialogInterface, i:Int){
                         finishAndRemoveTask()
-                    }
-                }).setPositiveButton("No", object : DialogInterface.OnClickListener {
-                    override fun onClick(dialogInterface: DialogInterface, i:Int){
                     }
                 })
                 .show()
