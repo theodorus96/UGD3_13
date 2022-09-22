@@ -13,8 +13,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inputPassword: TextInputLayout
     private lateinit var mainLayout: ConstraintLayout
     lateinit var  mBundle: Bundle
-    lateinit var vUsername: String
-    lateinit var vPassword : String
+    var vUsername: String = "admin"
+    var vPassword: String = "admin"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnLogin.setOnClickListener(View.OnClickListener {
-            var checkLogin = true
+            var checkLogin = false
             val username: String = inputUsername.getEditText()?.getText().toString()
             val password: String = inputPassword.getEditText()?.getText().toString()
 
@@ -49,10 +49,16 @@ class MainActivity : AppCompatActivity() {
                     checkLogin = false
                 }
 
-            if (username == vUsername && password == vPassword) checkLogin=true
-            if(!checkLogin) return@OnClickListener
-            val moveHome = Intent( this@MainActivity,HomeActivity::class.java)
-            startActivity(moveHome)
+            if (username == vUsername && password == vPassword) {
+                checkLogin=true
+            }
+            if(!checkLogin) {
+                return@OnClickListener
+            } else {
+                val moveHome = Intent( this@MainActivity,HomeActivity::class.java)
+                startActivity(moveHome)
+            }
+
         })
     }
     fun getBundle(){
